@@ -1,0 +1,83 @@
+/* Creating a file A in Desktop and save the next steps in it */
+
+christina@kalli:~/Desktop$ mkdir A
+christina@kalli:~/Desktop$ cd A
+
+/* Create puplic key A */
+
+christina@kalli:~/Desktop/A$ openssl genrsa -out privateA.pem 2048
+Generating RSA private key, 2048 bit long modulus (2 primes)
+......................................................................+++++
+..+++++
+e is 65537 (0x010001)
+
+christina@kalli:~/Desktop/A$ ls
+privateA.pem
+
+christina@kalli:~/Desktop/A$ cat privateA.pem
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpQIBAAKCAQEAr3UJ5piEO7QT+pJw7IqZuPJyfBMSkTEiUGVtRsHVVcssAt8+
+BatyAwovINNKxahQKtW/KRlkAEo4QCiVj5cPrrj7uzZkW9dlErLV0WpqYDQf1cMu
+5kdw8uWOVC9kXvl9Cl1F4v0hg0C2XICEqFtnkLhXDUycwLh0I68ySGao7NyuZG8d
+gc7hSU9MWHdpllZo5ArM4sJ3afSOvAZGWGB68olRhpfNsZWCuAy90tSAbXUeeKpL
+FMOq06z+Nl3eePEiIXd/b2j+3fMhxwW1nrGpmFig34rtXxOdArJIx6oyrDkZ8RhK
+54WeBklLWYrh+WDERv2JUrvUczTdaAkjNDmeOQIDAQABAoIBAQCoXCAB+3t3ZpZ9
+LCPbdiuHgm1EjXCVjZYlmw2+haRVzL0QjHKRMjAWpqEOWHE5NQan866Ym1qPxKgx
+OEA7JnLP74Tt4YVvc0HzLVNqvTgR1DJwBfhs00SYbpmiQk+HqtLHLTUwWEDeFyxl
+mpSwj/TSs3AkvMz1SIl47FXNj2Ss0oWGhjE2+rtRoAogpk47+ZP0jx0RHxPfmFVM
+x9E6A+JAZgiwr6EHnHo6aKkcbQknMLGPHjE20sEV8ajD27mYCZCOkIFTgwMil3WV
+te110/4ON0dK9z36SY/ubVN0eJnJbssGwsudeha0RxGC+8pUe+OdpcrdVLuSsgIv
+KoiJsxk5AoGBAOKk9XSC5amQ0Cr3g0FSNncT26qQeRfKf+uq73uVWtkIzhw3qHWc
+yrYSsd5A1Osx/fzYmaoFEC8wWKFlOiyyt9UMYxlBEecGk990llLTotHZ3RbgEcQm
+QQIw/06RfvaFNcu0hcC83b6lCLGA/fIFk1JiZUFp7ASEL6azMOp0PrAfAoGBAMYu
+0o+D+rzHgSBI8SpqFQ0etvrqIQkQx4ID1oFIkv761ftec6XrS72MLVrdMdXYEmg5
+DH/8TK2JJqCuHJ0FpKGFAfd8dWbwj2Z7lde1kOpQgckm+YcSzX+/eyJC837n/Esx
+hEYd9socu4qvkWbaVZccUbTXTPJeCMz0/5iiTAanAoGAP12lbpzGPyFIwiqPXOzy
+Y1p++PIJmRg5qZcR+7hnPPTUQ1lgVPmwRzV021G+9b71ZwLb+4gM3VSkAwO9Pw/8
+i6k5766cpb3WDAyZlrCq/gbuZF3jObcER+uRBdNx7tSRlNF0780eJhYYFyCcX1Ul
+ukveSWqm3SBj/jRtQa+cczsCgYEAlz3YVsnjqfmeo2LHGRVH53FPNwFCIMb7Wk9P
+fe5Cr/ABKQoVu8NrU8YMPtGbXJS+x2byESIb6jtGjU0SbQqHbvQwYgxLFDn1VcJu
+weXAJ/E0eqwRtXE1/o3EjIsHhAvKUCADz/bCBdATl20Qy6tHskBcYmQERtpYYQF/
+pZ4F4vUCgYEAulOqez44NMrmDHizOd5dfhWpxVSjvsDpJs2FlC4O6fMpCiGC+yRi
+A95c6TRmPTt8X8KkeU/lGZ/Qf4iGct0NNgIc30dWVpSJ7MI9lXZDwyBZ3VYlCfZ3
+ggFhdOSoa+l5POGLpgf0kFhEaAwIVr9Sj3+TCZxFDU0sd9QAxZUnK3E=
+-----END RSA PRIVATE KEY-----
+
+/* Create a puplic key A */
+
+christina@kalli:~/Desktop/A$ openssl rsa -in privateA.pem -pubout -out publicA.pem
+writing RSA key
+
+christina@kalli:~/Desktop/A$ cat publicA.pem
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr3UJ5piEO7QT+pJw7IqZ
+uPJyfBMSkTEiUGVtRsHVVcssAt8+BatyAwovINNKxahQKtW/KRlkAEo4QCiVj5cP
+rrj7uzZkW9dlErLV0WpqYDQf1cMu5kdw8uWOVC9kXvl9Cl1F4v0hg0C2XICEqFtn
+kLhXDUycwLh0I68ySGao7NyuZG8dgc7hSU9MWHdpllZo5ArM4sJ3afSOvAZGWGB6
+8olRhpfNsZWCuAy90tSAbXUeeKpLFMOq06z+Nl3eePEiIXd/b2j+3fMhxwW1nrGp
+mFig34rtXxOdArJIx6oyrDkZ8RhK54WeBklLWYrh+WDERv2JUrvUczTdaAkjNDme
+OQIDAQAB
+-----END PUBLIC KEY-----
+
+/* Adding the position of public key B and encrypt the msg with it */
+
+christina@kalli:~/Desktop/A$ ln -s /home/christina/Desktop/B/publicB.pem
+christina@kalli:~/Desktop/A$ ls
+privateA.pem  publicA.pem  publicB.pem
+
+christina@kalli:~/Desktop/A$ nano msg
+christina@kalli:~/Desktop/A$ ls
+msg  privateA.pem  publicA.pem  publicB.pem
+ 
+christina@kalli:~/Desktop/A$ openssl rsautl -encrypt -in msg -out enc -inkey publicB.pem -pubin 
+christina@kalli:~/Desktop/A$ ls
+enc  msg  privateA.pem  publicA.pem  publicB.pem
+
+christina@kalli:~/Desktop/A$ cat enc
+�Q��CB�++�rҋ����q(��DK� ���;:So�,���*u�JP�k�X��$��n�}�r�I܈�▒▒G]7▒)<���^;�U|U�b�m�p�޺��_��
+u?�mr�pK�2i�
+            �{��x��kBs<�pQV.�Q���Л��,��
+                                       ��v�3-�V��
+                                                 #l&�
+X~'g_.�=^�|�l��'�9Q��y.�K�����N#�G:&S���{%���\��|��~D����a-@����\��&��'H�Z��achristina@kalli:~/Desktop/A$                                                       
+christina@kalli:~/Desktop/A$ 
