@@ -1,0 +1,60 @@
+/* Create a file for B and save the next steps in it */
+
+christina@kalli:~/Desktop$ mkdir B
+christina@kalli:~/Desktop$ cd B
+
+/* Create a private and a public key B */
+
+christina@kalli:~/Desktop/B$ openssl genrsa -out privateB.pem 2048
+Generating RSA private key, 2048 bit long modulus (2 primes)
+................+++++
+................................+++++
+e is 65537 (0x010001)
+
+christina@kalli:~/Desktop/B$ ls
+privateB.pem
+
+christina@kalli:~/Desktop/B$ openssl rsa -in privateB.pem -pubout -out publicB.pem
+writing RSA key
+
+christina@kalli:~/Desktop/B$ ls
+privateB.pem  publicB.pem
+christina@kalli:~/Desktop/B$ cat publicB.pem
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuecLTNii7KCYWNohQ3ci
+OMfcZnBu7AxAK9JNwBe3oy/Tpa8OcgedlSC6dZ+9oCW2oNJPQ4WS/M5Hm9NhdS2X
+xjBA/Wtvc69rqywog3t7WdrTg8VXuzV4P4qbRnCjzCuHLBjMbVJjE3LrWIJ7Lqy+
+hkLTj6Pj3L/h4qcIEUxKDmI1v/lOoY+HNGuWsRyM7TJ0wsOFK2fvaGPaq9pWmtE8
+aS5ONGBnZrRQ+N8K7wLrSj/VTCZM7lZhAUdvBE8pYRIna6wEWZ4KSo9N7YhUhhOW
+5BhjERoW2FfFr+KGnOtAJyl2IKaAmyePcUJhmvZNOAdPZw5B+G/F9CTlmxfX9r4a
+0QIDAQAB
+-----END PUBLIC KEY-----
+
+/* Adding the position of public key A */
+
+christina@kalli:~/Desktop/B$ ln -s /home/christina/Desktop/A/publicA.pem
+
+christina@kalli:~/Desktop/B$ ls
+privateB.pem  publicA.pem  publicB.pem
+
+/* Add the enc msg to msgreceived in B file */
+
+christina@kalli:~/Desktop/B$ cp /home/christina/Desktop/A/enc msgreceived
+christina@kalli:~/Desktop/B$ ls
+msgreceived  privateB.pem  publicA.pem  publicB.pem
+
+/* Decrypt msgreceived with private key B */
+
+christina@kalli:~/Desktop/B$ openssl rsautl -decrypt -in msgreceived -out message -inkey privateB.pem 
+
+christina@kalli:~/Desktop/B$ cat message
+Hello, I'm A and I'm sending you a message
+
+christina@kalli:~/Desktop/B$ cat msgreceived
+?���$%�l7[ H2���'rO�7K����CΓ�H��>�¬c�
+
+~O�����L��.���!�c,v't�WlhI1�#^� L;�t]Օ�c$=�;yПJ_y;|�o��E�m�K���Uۯ�Vt��(S����W�ȀQ�J����\h�[r��T�bĆ���������
+{����▒JVƔ���Ml���z'"�^,I������Y�ک4��?��җ�?*�������j�Jt�i�L
+                                                          christina@kalli:~/Desktop/B$                                                                          
+christina@kalli:~/Desktop/B$ 
+christina@kalli:~/Desktop/B$ 
