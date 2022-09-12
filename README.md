@@ -14,4 +14,4 @@ The asymmetric encryption procedure you can use if you want to send a message fr
 
 Note:
 1) We will use a 2048 bit file.
-2) I have tso files, the terminal of A and B. Be careful we don't write A script firts and then B, we are doing it the SAME time.
+2) I have tso files, the terminal of A and B. Be careful we don't write A script first and then B, we are doing it the SAME time.
