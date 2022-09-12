@@ -1,5 +1,5 @@
 # Asymmetric_Encryption_RSA
-Encryption using the asymmetric algorithm RSA, create a massage and sending it from A to B, in kali linux (openssl)
+Encryption using the asymmetric algorithm RSA, create a message and sending it from A to B, in kali linux (openssl)
 
 
 Using openssl we are going to implement an asymmetric encryption rsa, with key generator. 
